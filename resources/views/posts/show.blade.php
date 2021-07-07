@@ -13,7 +13,7 @@
 <body>
     <div class="container" m-5>
             <div class="m-5">
-                <a href="{{ route('posts.index', ['page'=>$page]) }}">목록보기</a>
+                <a href="{{ route('posts.index', ['page'=>$page, 'page'=>$page]) }}">목록보기</a>
             </div>   
             <div class="form-group">
                 <label for="title">Title</label>
@@ -47,10 +47,25 @@
                 <label>작성자</label>
                 <input type="text" readonly class="form-control" value="{{ $post->user_id }}">
             </div>
-            <div class="flex">
-                <a class="btn btn-warning" href="{{ route('post.edit', ['post'=>$post->id]) }}">수정</a>
-                <button class="btn btn-danger" onclick="location.href={{ route('post.delete', ['id'=>$post->id]) }}">삭제</button>
-            </div>
+
+            @auth
+                {{-- @if (auth()->user()->id == $post->user_id) --}}
+                @can('update',$post)
+                <div class="flex">
+                    <div>
+                    <a class="btn btn-warning" href="{{ route('post.edit', ['post'=>$post->id,'page'=>$page]) }}">수정</a>
+                    </div>
+                    <div>
+                        <form action="{{ route('post.delete', ['id'=>$post->id, 'page'=>$page]) }}" method="post">
+                            @csrf
+                            @method("delete")
+                            <button type ="submit" class="btn btn-danger">삭제</button>
+                        </form>
+                    </div>
+                </div>
+                @endcan
+                {{-- @endif --}}
+            @endauth
     </div>
 </body>
 </html>
