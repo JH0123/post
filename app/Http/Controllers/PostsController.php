@@ -167,4 +167,11 @@ class PostsController extends Controller
 
         return redirect()->route('posts.index', ['page' => $page]);
     }
+    public function myposts()
+    {
+        // dd('ok');
+        $posts = auth()->user()->posts()->latest()->paginate(5);
+
+        return view('posts.index', compact('posts'));
+    }
 }

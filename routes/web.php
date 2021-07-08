@@ -29,6 +29,8 @@ Route::post('/posts/store', [PostsController::class, 'store'])->name('posts.stor
 Route::get('/posts/index', [PostsController::class, 'index'])->name('posts.index');
 
 Route::get('/posts/show/{id}', [PostsController::class, 'show'])->name('post.show'); //id 값을 넘겨 주기 위해서 {id}를 쓴다(라우터 파라미터)
+Route::get('/posts/mypost', [PostsController::class, 'myposts'])->name('posts.mypost');
+
 Route::get('/posts/{post}', [PostsController::class, 'edit'])->name('post.edit');
 Route::put('/posts/{id}', [PostsController::class, 'update'])->name('post.update');
 Route::delete('/posts/{id}', [PostsController::class, 'destroy'])->name('post.delete');
