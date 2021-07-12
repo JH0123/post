@@ -14,6 +14,7 @@
     <div class="container" m-5>
             <div class="m-5">
                 <a href="{{ route('posts.index', ['page'=>$page, 'page'=>$page]) }}">목록보기</a>
+                {{-- <a href="{{ url()->previous() }}">목록보기</a> --}}
             </div>   
             <div class="form-group">
                 <label for="title">Title</label>

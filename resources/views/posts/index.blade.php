@@ -30,7 +30,8 @@
             </div> --}}
             {{-- <span>written on {{ $post->created_at }}</span> --}}
             <span>written on {{ $post->created_at->diffForHumans() }}
-                {{ $post->count }} {{ $post->count > 0 ? Str::plural('view', $post->count) : 'view'}} 
+                {{ $post->viewers->count() }}
+                {{ $post->viewers->count() > 0 ? Str::plural('view', $post->viewers->count()) : 'view'}} 
                 {{-- Str::plural은 단수형을 복수형으로 변환해 준다 --}}
             </span>
             <hr>
