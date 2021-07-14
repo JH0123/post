@@ -10,6 +10,7 @@ class Post extends Model
     //protected $table = 'my_posts'; 
     use HasFactory;
 
+    protected $guarded = [];
     public function imagePath()
     {
         // $path = '/storage/images/';
