@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container mt-5 md-5">
-        <a href="{{ route('dashboard') }}">Dshboard</a>
+        <a href="{{ route('dashboard') }}">Dashboard</a>
     <h1>게시글 리스트</h1>
     @auth
         <a href="/posts/create" class="btn btn-primary">게시글 작성</a>
